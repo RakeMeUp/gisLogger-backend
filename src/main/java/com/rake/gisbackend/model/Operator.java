@@ -21,6 +21,12 @@ public class Operator {
     @Column(name = "pwd")
     private String pwd;
 
+    public Operator(String name, String email, String pwd) {
+        this.name = name;
+        this.email = email;
+        this.pwd = pwd;
+    }
+
     @OneToOne(mappedBy = "operator")
     private OperatorEntry operatorEntry;
 }

@@ -16,7 +16,6 @@ Table gis.las{
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "las")
 public class Las {
     @Id
@@ -24,6 +23,11 @@ public class Las {
     private int lasId;
     private String area;
     private String project;
+
+    public Las(String project, String area) {
+        this.project = project;
+        this.area = area;
+    }
 
     @OneToOne(mappedBy = "las")
     private Entry entry;

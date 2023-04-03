@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Operator {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,6 +24,13 @@ public class Operator {
         this.name = name;
         this.email = email;
         this.pwd = pwd;
+    }
+
+    public Operator(Operator operator){
+        this.name = operator.name;
+        this.email = operator.email;
+        this.pwd = operator.pwd;
+        this.operatorEntry = operator.operatorEntry;
     }
 
     @OneToOne(mappedBy = "operator")

@@ -19,9 +19,14 @@ Table gis.entry{
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "entry")
 public class Entry {
+    public Entry(Date startDate, Date endDate, Las las) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.las = las;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "entryId")

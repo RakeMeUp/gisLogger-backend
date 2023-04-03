@@ -14,7 +14,6 @@ Table gis.operator_entry{
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "operatorEntry")
 public class OperatorEntry {
     @Id
@@ -26,4 +25,9 @@ public class OperatorEntry {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(referencedColumnName = "entryId")
     private Entry entry;
+
+    public OperatorEntry(Operator operator, Entry entry) {
+        this.operator = operator;
+        this.entry = entry;
+    }
 }

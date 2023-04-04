@@ -12,6 +12,11 @@
     <artifactId>gisbackend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>gisbackend</name>
+    <developers>
+        <developer>
+            <name>Rake</name>
+        </developer>
+    </developers>
     <description>gisbackend</description>
     <properties>
         <java.version>17</java.version>

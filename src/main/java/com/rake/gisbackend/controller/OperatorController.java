@@ -1,9 +1,8 @@
 package com.rake.gisbackend.controller;
 
 import com.rake.gisbackend.model.Operator;
-import com.rake.gisbackend.repository.OperatorRepository;
+import com.rake.gisbackend.service.OperatorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,20 +10,31 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/operator")
 public class OperatorController {
 
-    private final OperatorRepository operatorRepository;
+    private final OperatorService operatorService;
 
-    public OperatorController(OperatorRepository operatorRepository) {
-        this.operatorRepository = operatorRepository;
+    public OperatorController(OperatorService operatorService) {
+        this.operatorService = operatorService;
     }
 
+
     @GetMapping
-    public ResponseEntity getAllProducts() {
-        return ResponseEntity.ok(this.operatorRepository.findAll());
+    public ResponseEntity getAllOperators() {
+        return ResponseEntity.ok(operatorService.getAllOperators());
     }
 
     @PostMapping
     public ResponseEntity<Operator> addOperator(@RequestBody Operator operator) {
-        operatorRepository.save(operator);
-        return ResponseEntity.ok(operator);
+        return ResponseEntity.ok(operatorService.addOperator(operator));
+    }
+
+    @PutMapping("/{operatorId}")
+    public  ResponseEntity<Operator> updateOperatorById(@PathVariable int operatorId, @RequestBody Operator operator) {
+        return ResponseEntity.ok(operatorService.updateOperatorById(operatorId, operator));
+    }
+
+    @DeleteMapping("/{operatorId}")
+    public ResponseEntity deleteOperator(@PathVariable int operatorId) {
+        operatorService.deleteOperator(operatorId);
+        return ResponseEntity.ok().build();
     }
 }

@@ -33,7 +33,7 @@ public class Operator {
         this.operatorEntry = operator.operatorEntry;
     }
 
-    @OneToOne(mappedBy = "operator")
+    @OneToOne(mappedBy = "id.operator")
     private OperatorEntry operatorEntry;
 }
 

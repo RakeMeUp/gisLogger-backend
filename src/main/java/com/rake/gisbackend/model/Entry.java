@@ -36,7 +36,7 @@ public class Entry {
     @Column(name = "endDate")
     private Date endDate;
 
-    @OneToOne(mappedBy = "entry")
+    @OneToOne(mappedBy = "id.entry")
     private OperatorEntry operatorEntry;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
